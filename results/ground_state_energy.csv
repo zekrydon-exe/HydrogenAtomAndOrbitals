@@ -1,0 +1,2 @@
+energy_numerical_hartree,energy_analytical_hartree,absolute_error_hartree,relative_error_percent,wavefunction_norm,num_points,r_max_bohr
+-0.499921977422384,-0.5,7.80225776160215e-05,0.015604515523204299,1.000000000000009,2000,50.0
