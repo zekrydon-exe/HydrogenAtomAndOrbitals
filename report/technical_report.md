@@ -48,9 +48,9 @@ The principal objectives are:
 
 In atomic units, the non-relativistic Hamiltonian for the hydrogen atom is
 
-$$
+```math
 \hat{H}=-\frac{1}{2}\nabla^2-\frac{1}{r},
-$$
+```
 
 where:
 
@@ -70,13 +70,13 @@ Distances are expressed in Bohr radii, denoted $a_0$, and energies are expressed
 
 The Coulomb potential depends only on the radial coordinate. Consequently, the wavefunction can be separated into radial and angular components:
 
-$$
+```math
 \psi_{nlm}(r,\theta,\phi)
 
 =
 
 R_{nl}(r)Y_l^m(\theta,\phi),
-$$
+```
 
 where:
 
@@ -86,23 +86,23 @@ where:
 
 - $m$ is the magnetic quantum number;
 
-- $R_{nl}(r)$ is the radial wavefunction;
+- $R\_{nl}(r)$ is the radial wavefunction;
 
 - $Y_l^m(\theta,\phi)$ is a spherical harmonic.
 
 The allowed quantum numbers satisfy
 
-$$
+```math
 n=1,2,3,\ldots,
-$$
+```
 
-$$
+```math
 l=0,1,\ldots,n-1,
-$$
+```
 
-$$
+```math
 m=-l,-l+1,\ldots,l.
-$$
+```
 
 The values of $l=0,1,2$ correspond to s, p and d orbitals, respectively.
 
@@ -110,15 +110,15 @@ The values of $l=0,1,2$ correspond to s, p and d orbitals, respectively.
 
 The reduced radial wavefunction is defined as
 
-$$
+```math
 u_{nl}(r)=rR_{nl}(r).
-$$
+```
 
 This transformation simplifies the radial equation by removing the first-derivative term.
 
 The reduced radial Schrödinger equation becomes
 
-$$
+```math
 \left[
 
 -\frac{1}{2}\frac{d^2}{dr^2}
@@ -130,11 +130,11 @@ $$
 =
 
 E_{nl}u_{nl}(r),
-$$
+```
 
 where the effective potential is
 
-$$
+```math
 V_{\mathrm{eff}}(r)
 
 =
@@ -144,7 +144,7 @@ V_{\mathrm{eff}}(r)
 \+
 
 \frac{l(l+1)}{2r^2}.
-$$
+```
 
 The effective potential contains two contributions:
 
@@ -158,63 +158,63 @@ The centrifugal contribution depends on the angular momentum quantum number. It 
 
 The full wavefunction is normalised according to
 
-$$
+```math
 \int |\psi_{nlm}|^2\,d\tau=1.
-$$
+```
 
 With normalised spherical harmonics, the radial normalisation condition becomes
 
-$$
+```math
 \int_0^\infty |R_{nl}(r)|^2r^2\,dr=1.
-$$
+```
 
-Since $u_{nl}(r)=rR_{nl}(r)$, this is equivalent to
+Since $u\_{nl}(r)=rR\_{nl}(r)$, this is equivalent to
 
-$$
+```math
 \int_0^\infty |u_{nl}(r)|^2\,dr=1.
-$$
+```
 
 The radial probability density is therefore
 
-$$
+```math
 P_{nl}(r)=|u_{nl}(r)|^2.
-$$
+```
 
 The probability of finding the electron between $r$ and $r+dr$ is approximately
 
-$$
+```math
 P_{nl}(r)\,dr.
-$$
+```
 
 This quantity must be distinguished from the three-dimensional probability density,
 
-$$
+```math
 \rho(r,\theta,\phi)=|\psi_{nlm}(r,\theta,\phi)|^2.
-$$
+```
 
 ### 2.5 Analytical energy spectrum
 
 The exact non-relativistic bound-state energies of hydrogen in atomic units are
 
-$$
+```math
 \boxed{E_n=-\frac{1}{2n^2}\ \text{Hartree}}.
-$$
+```
 
 The analytical energy depends on the principal quantum number $n$, but not on $l$ or $m$.
 
 Consequently, states with the same $n$ have the same analytical energy in the non-relativistic Coulomb model. For example,
 
-$$
+```math
 E_{2s}=E_{2p}=-0.125\ \text{Hartree},
-$$
+```
 
 and
 
-$$
+```math
 E_{3s}=E_{3p}=E_{3d}
 
 =-0.0555555556\ \text{Hartree}.
-$$
+```
 
 This degeneracy provides a useful test of the numerical implementation.
 
@@ -222,9 +222,9 @@ This degeneracy provides a useful test of the numerical implementation.
 
 For a hydrogenic bound state, the number of radial nodes is
 
-$$
+```math
 \boxed{N_{\mathrm{radial}}=n-l-1}.
-$$
+```
 
 A radial node is a non-origin radial position at which the radial wavefunction vanishes and changes sign.
 
@@ -248,9 +248,9 @@ These values provide an additional physical validation criterion beyond energy a
 
 The infinite radial domain is approximated by a finite computational interval,
 
-$$
+```math
 0\<r\<r_{\max}.
-$$
+```
 
 The interior radial grid contains evenly spaced points. The grid spacing is determined by the outer boundary and the number of interior points.
 
@@ -260,15 +260,15 @@ The origin is excluded from the interior grid because the effective potential co
 
 The reduced radial wavefunction satisfies the regular-origin condition
 
-$$
+```math
 u(0)=0.
-$$
+```
 
 At the finite outer boundary, the calculation imposes
 
-$$
+```math
 u(r_{\max})=0.
-$$
+```
 
 The outer boundary approximates the decay of a bound-state wavefunction at large distance. Its adequacy depends on the state being calculated and the chosen boundary radius.
 
@@ -278,17 +278,17 @@ Spatially extended excited states can be more sensitive to the outer boundary th
 
 The second derivative is approximated by the central finite-difference expression
 
-$$
+```math
 \frac{d^2u}{dr^2}
 
 \approx
 
 \frac{u_{i+1}-2u_i+u_{i-1}}{(\Delta r)^2}.
-$$
+```
 
 Substituting this approximation into the radial Schrödinger equation gives
 
-$$
+```math
 -\frac{1}{2}
 
 \frac{u_{i+1}-2u_i+u_{i-1}}{(\Delta r)^2}
@@ -300,13 +300,13 @@ V_{\mathrm{eff}}(r_i)u_i
 =
 
 Eu_i.
-$$
+```
 
 This can be expressed as a matrix eigenvalue problem,
 
-$$
+```math
 \mathbf{H}\mathbf{u}=E\mathbf{u},
-$$
+```
 
 where $\mathbf{H}$ is the discrete Hamiltonian matrix.
 
@@ -322,9 +322,9 @@ The lowest eigenvalues correspond to the lowest-energy radial states for a selec
 
 The computed eigenvectors are normalised using a discrete approximation to the radial integral:
 
-$$
+```math
 \sum_i |u_i|^2\Delta r\approx 1.
-$$
+```
 
 This ensures that the numerical wavefunctions follow the radial normalisation convention used throughout the project.
 
@@ -344,7 +344,7 @@ The source package is organised under `src/hydrogen_atom/`.
 | `constants.py` | Stores constants and analytical reference values. |
 | `radial.py` | Constructs the radial grid, effective potential and sparse Hamiltonian; includes radial-node counting. |
 | `solver.py` | Solves the radial eigenvalue problem and returns energies and radial eigenfunctions. |
-| `__init__.py` | Defines the Python package. |
+| `\_\_init\_\_.py` | Defines the Python package. |
 
 ### 4.2 Calculation scripts
 
@@ -410,37 +410,37 @@ The ground-state calculation used:
 
 The reported numerical energy was
 
-$$
+```math
 E_{\mathrm{numerical}}
 
 \approx -0.4999219774\ \text{Hartree}.
-$$
+```
 
 The analytical energy is
 
-$$
+```math
 E_{\mathrm{exact}}=-0.5\ \text{Hartree}.
-$$
+```
 
 The absolute energy error is
 
-$$
+```math
 \Delta E
 
 =
 
 |E_{\mathrm{numerical}}-E_{\mathrm{exact}}|.
-$$
+```
 
 Using the reported numerical value,
 
-$$
+```math
 \boxed{\Delta E\approx7.80\times10^{-5}\ \text{Hartree}}.
-$$
+```
 
 The relative error is
 
-$$
+```math
 \epsilon_{\mathrm{rel}}
 
 =
@@ -450,13 +450,13 @@ $$
 {|E_{\mathrm{exact}}|}
 
 \times100\%.
-$$
+```
 
 The reported relative error is approximately
 
-$$
+```math
 \boxed{\epsilon_{\mathrm{rel}}\approx0.0156\%}.
-$$
+```
 
 The numerical result is close to the analytical ground-state energy.
 
@@ -468,9 +468,9 @@ For the 1s state, the reduced radial wavefunction has no radial nodes. The radia
 
 The reported wavefunction norm was
 
-$$
+```math
 \sum_i |u_i|^2\Delta r\approx1.
-$$
+```
 
 The ground-state tests also check that the numerical energy lies within a specified tolerance of the analytical result.
 
@@ -483,21 +483,21 @@ The lowest four s-state energies were calculated numerically and compared with t
 
 The exact reference values are
 
-$$
+```math
 E_1=-0.5,
 
 \qquad
 
 E_2=-0.125,
-$$
+```
 
-$$
+```math
 E_3=-0.0555555556,
 
 \qquad
 
 E_4=-0.03125,
-$$
+```
 
 with all energies expressed in Hartree.
 
@@ -555,11 +555,11 @@ The central finite-difference approximation to the second derivative has a leadi
 
 In the grid-converged regime, the energy error is therefore expected to behave approximately as
 
-$$
+```math
 |E(\Delta r)-E_{\mathrm{exact}}|
 
 \propto(\Delta r)^2.
-$$
+```
 
 If the grid spacing is halved, the leading error should decrease by approximately a factor of four.
 
@@ -584,11 +584,11 @@ The initial 4s calculation exhibited a larger relative error than the lower s-st
 
 The analytical reference energy is
 
-$$
+```math
 E_4=-\frac{1}{2(4)^2}
 
 =-0.03125\ \text{Hartree}.
-$$
+```
 
 The outer boundary was varied from $40\,a_0$ to $100\,a_0$. The number of interior grid points was adjusted to maintain a grid spacing of approximately $0.025\,a_0$.
 
@@ -620,15 +620,15 @@ Energy agreement is necessary but not sufficient to establish the correctness of
 
 The reduced radial wavefunction must satisfy
 
-$$
+```math
 \int_0^\infty |u_{nl}(r)|^2\,dr=1.
-$$
+```
 
 On the discrete grid, the integral is approximated by
 
-$$
+```math
 \sum_i |u_i|^2\Delta r.
-$$
+```
 
 The automated test suite includes a normalisation test for the computed ground-state wavefunction. The reported test passed within the specified tolerance.
 
@@ -636,7 +636,7 @@ The automated test suite includes a normalisation test for the computed ground-s
 
 For a fixed angular momentum quantum number $l$, distinct radial eigenstates should be orthogonal:
 
-$$
+```math
 \int_0^\infty
 
 u_{nl}(r)u_{ml}(r)\,dr
@@ -644,17 +644,17 @@ u_{nl}(r)u_{ml}(r)\,dr
 =
 
 \delta_{nm}.
-$$
+```
 
 The numerical overlap matrix is constructed using the discrete grid integration convention:
 
-$$
+```math
 S_{nm}
 
 =
 
 \sum_i u_{ni}u_{mi}\Delta r.
-$$
+```
 
 For normalised, mutually orthogonal states, the overlap matrix should approximate the identity matrix.
 
@@ -664,9 +664,9 @@ An automated test checks the orthonormality of the first four computed s-state e
 
 The expected number of radial nodes is
 
-$$
+```math
 N_{\mathrm{radial}}=n-l-1.
-$$
+```
 
 The implementation includes a node-counting function that detects sign changes in the reduced radial wavefunction while excluding sufficiently small tail values to reduce false counts caused by numerical noise.
 
@@ -699,31 +699,31 @@ These tests provide a direct check of the radial eigenfunctions against known hy
 
 The three-dimensional orbital wavefunction is expressed as
 
-$$
+```math
 \psi_{nlm}(r,\theta,\phi)
 
 =
 
 R_{nl}(r)Y_l^m(\theta,\phi).
-$$
+```
 
 The radial component is obtained from the numerical solver through
 
-$$
+```math
 R_{nl}(r)=\frac{u_{nl}(r)}{r}.
-$$
+```
 
 The angular component is calculated using spherical harmonics.
 
 The probability density is
 
-$$
+```math
 \rho(r,\theta,\phi)
 
 =
 
 |\psi_{nlm}(r,\theta,\phi)|^2.
-$$
+```
 
 ### 10.2 Visualisation method
 
@@ -749,9 +749,9 @@ The 2p orbital with $m=0$ has angular dependence proportional to $\cos\theta$. I
 
 The 3d orbital with $m=0$ has angular dependence proportional to
 
-$$
+```math
 3\cos^2\theta-1.
-$$
+```
 
 Its probability density contains two lobes along the $z$-axis and an equatorial toroidal region.
 
@@ -768,9 +768,9 @@ The project uses pytest to automate numerical and physical validation.
 
 The latest confirmed complete test run reported:
 
-$$
+```math
 \boxed{70\text{ tests passed}}.
-$$
+```
 
 The tests cover radial-grid construction, effective-potential values, Hamiltonian properties, input validation, energy comparisons, wavefunction normalisation, orthogonality, radial-node counts and numerical-versus-analytical wavefunction comparisons for the 1s, 2s and 2p states.
 
@@ -855,7 +855,7 @@ Although the numerical results are encouraging, several limitations remain.
 
 ### 12.1 Finite computational domain
 
-The exact radial domain extends to infinity, whereas the numerical domain ends at a finite $r_{\max}$.
+The exact radial domain extends to infinity, whereas the numerical domain ends at a finite $r\_{\max}$.
 
 The 4s boundary study demonstrates that insufficient radial extent can introduce substantial energy error. Boundary convergence should therefore be assessed for additional excited states before generalising the observed behaviour to the entire spectrum.
 
