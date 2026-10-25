@@ -292,10 +292,6 @@ Substituting this approximation into the radial Schrödinger equation gives
 -\frac{1}{2}\frac{u_{i+1}-2u_i+u_{i-1}}{(\Delta r)^2}
 +V_{\mathrm{eff}}(r_i)u_i
 =Eu_i.
-
-=
-
-Eu_i.
 ```
 
 This can be expressed as a matrix eigenvalue problem,
