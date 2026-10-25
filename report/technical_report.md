@@ -72,7 +72,9 @@ The Coulomb potential depends only on the radial coordinate. Consequently, the w
 
 $$
 \psi_{nlm}(r,\theta,\phi)
+
 =
+
 R_{nl}(r)Y_l^m(\theta,\phi),
 $$
 
@@ -94,11 +96,9 @@ $$
 n=1,2,3,\ldots,
 $$
 
-
 $$
 l=0,1,\ldots,n-1,
 $$
-
 
 $$
 m=-l,-l+1,\ldots,l.
@@ -120,10 +120,15 @@ The reduced radial Schrödinger equation becomes
 
 $$
 \left[
+
 -\frac{1}{2}\frac{d^2}{dr^2}
+
 +V_{\mathrm{eff}}(r)
+
 \right]u_{nl}(r)
+
 =
+
 E_{nl}u_{nl}(r),
 $$
 
@@ -131,9 +136,13 @@ where the effective potential is
 
 $$
 V_{\mathrm{eff}}(r)
+
 =
+
 -\frac{1}{r}
-+
+
+\+
+
 \frac{l(l+1)}{2r^2}.
 $$
 
@@ -203,6 +212,7 @@ and
 
 $$
 E_{3s}=E_{3p}=E_{3d}
+
 =-0.0555555556\ \text{Hartree}.
 $$
 
@@ -220,21 +230,14 @@ A radial node is a non-origin radial position at which the radial wavefunction v
 
 Examples include:
 
-\| State | $n$ | $l$ | Expected radial nodes |
-
-\|---|---:|---:|---:|
-
-\| 1s | 1 | 0 | 0 |
-
-\| 2s | 2 | 0 | 1 |
-
-\| 2p | 2 | 1 | 0 |
-
-\| 3s | 3 | 0 | 2 |
-
-\| 3p | 3 | 1 | 1 |
-
-\| 3d | 3 | 2 | 0 |
+| State | $n$ | $l$ | Expected radial nodes |
+|---|---:|---:|---:|
+| 1s | 1 | 0 | 0 |
+| 2s | 2 | 0 | 1 |
+| 2p | 2 | 1 | 0 |
+| 3s | 3 | 0 | 2 |
+| 3p | 3 | 1 | 1 |
+| 3d | 3 | 2 | 0 |
 
 These values provide an additional physical validation criterion beyond energy agreement.
 
@@ -277,7 +280,9 @@ The second derivative is approximated by the central finite-difference expressio
 
 $$
 \frac{d^2u}{dr^2}
+
 \approx
+
 \frac{u_{i+1}-2u_i+u_{i-1}}{(\Delta r)^2}.
 $$
 
@@ -285,10 +290,15 @@ Substituting this approximation into the radial Schrödinger equation gives
 
 $$
 -\frac{1}{2}
+
 \frac{u_{i+1}-2u_i+u_{i-1}}{(\Delta r)^2}
-+
+
+\+
+
 V_{\mathrm{eff}}(r_i)u_i
+
 =
+
 Eu_i.
 $$
 
@@ -329,37 +339,25 @@ The project is implemented in Python using NumPy, SciPy, Matplotlib, pytest and 
 
 The source package is organised under `src/hydrogen_atom/`.
 
-\| File | Purpose |
-
-\|---|---|
-
-\| `constants.py` | Stores constants and analytical reference values. |
-
-\| `radial.py` | Constructs the radial grid, effective potential and sparse Hamiltonian; includes radial-node counting. |
-
-\| `solver.py` | Solves the radial eigenvalue problem and returns energies and radial eigenfunctions. |
-
-\| `__init__.py` | Defines the Python package. |
+| File | Purpose |
+|---|---|
+| `constants.py` | Stores constants and analytical reference values. |
+| `radial.py` | Constructs the radial grid, effective potential and sparse Hamiltonian; includes radial-node counting. |
+| `solver.py` | Solves the radial eigenvalue problem and returns energies and radial eigenfunctions. |
+| `__init__.py` | Defines the Python package. |
 
 ### 4.2 Calculation scripts
 
 The `scripts/` directory contains independent programs for the main calculations.
 
-\| Script | Purpose |
-
-\|---|---|
-
-\| `ground_state.py` | Calculates the ground-state energy, evaluates its error and generates radial plots. |
-
-\| `excited_states.py` | Calculates the lowest four s-state energies. |
-
-\| `orbital_states.py` | Compares selected s-, p- and d-state energies with analytical values. |
-
-\| `convergence_study.py` | Investigates ground-state energy convergence with grid refinement. |
-
-\| `boundary_convergence.py` | Investigates 4s-state energy convergence as the radial boundary increases. |
-
-\| `orbital_visualisation.py` | Generates three-dimensional orbital probability-density isosurfaces. |
+| Script | Purpose |
+|---|---|
+| `ground_state.py` | Calculates the ground-state energy, evaluates its error and generates radial plots. |
+| `excited_states.py` | Calculates the lowest four s-state energies. |
+| `orbital_states.py` | Compares selected s-, p- and d-state energies with analytical values. |
+| `convergence_study.py` | Investigates ground-state energy convergence with grid refinement. |
+| `boundary_convergence.py` | Investigates 4s-state energy convergence as the radial boundary increases. |
+| `orbital_visualisation.py` | Generates three-dimensional orbital probability-density isosurfaces. |
 
 The calculations save numerical data as CSV files and figures as PNG files under `results/` and `figures/`.
 
@@ -400,19 +398,13 @@ The latest confirmed test run reported **70 passed tests**.
 
 The ground-state calculation used:
 
-\| Parameter | Value |
-
-\|---|---:|
-
-\| Principal quantum number, $n$ | 1 |
-
-\| Angular momentum, $l$ | 0 |
-
-\| Outer radial boundary | $50\,a_0$ |
-
-\| Interior grid points | 2,000 |
-
-\| Analytical energy | $-0.5$ Hartree |
+| Parameter | Value |
+|---|---:|
+| Principal quantum number, $n$ | 1 |
+| Angular momentum, $l$ | 0 |
+| Outer radial boundary | $50\,a_0$ |
+| Interior grid points | 2,000 |
+| Analytical energy | $-0.5$ Hartree |
 
 ### 5.2 Numerical result
 
@@ -420,6 +412,7 @@ The reported numerical energy was
 
 $$
 E_{\mathrm{numerical}}
+
 \approx -0.4999219774\ \text{Hartree}.
 $$
 
@@ -433,7 +426,9 @@ The absolute energy error is
 
 $$
 \Delta E
+
 =
+
 |E_{\mathrm{numerical}}-E_{\mathrm{exact}}|.
 $$
 
@@ -447,9 +442,13 @@ The relative error is
 
 $$
 \epsilon_{\mathrm{rel}}
+
 =
+
 \frac{|E_{\mathrm{numerical}}-E_{\mathrm{exact}}|}
+
 {|E_{\mathrm{exact}}|}
+
 \times100\%.
 $$
 
@@ -486,14 +485,17 @@ The exact reference values are
 
 $$
 E_1=-0.5,
+
 \qquad
+
 E_2=-0.125,
 $$
 
-
 $$
 E_3=-0.0555555556,
+
 \qquad
+
 E_4=-0.03125,
 $$
 
@@ -507,21 +509,14 @@ The numerical data are saved in `results/excited_state_energies.csv`, and the as
 
 Selected states were calculated using different angular momentum quantum numbers.
 
-\| State | $n$ | $l$ | Numerical energy (Hartree) | Analytical energy (Hartree) | Absolute error (Hartree) |
-
-\|---|---:|---:|---:|---:|---:|
-
-\| 1s | 1 | 0 | −0.4999219644 | −0.5000000000 | $7.8036\times10^{-5}$ |
-
-\| 2s | 2 | 0 | −0.1249951216 | −0.1250000000 | $4.8784\times10^{-6}$ |
-
-\| 2p | 2 | 1 | −0.1250016264 | −0.1250000000 | $1.6264\times10^{-6}$ |
-
-\| 3s | 3 | 0 | −0.0555545919 | −0.0555555556 | $9.6370\times10^{-7}$ |
-
-\| 3p | 3 | 1 | −0.0555563051 | −0.0555555556 | $7.4959\times10^{-7}$ |
-
-\| 3d | 3 | 2 | −0.0555556198 | −0.0555555556 | $6.4242\times10^{-8}$ |
+| State | $n$ | $l$ | Numerical energy (Hartree) | Analytical energy (Hartree) | Absolute error (Hartree) |
+|---|---:|---:|---:|---:|---:|
+| 1s | 1 | 0 | −0.4999219644 | −0.5000000000 | $7.8036\times10^{-5}$ |
+| 2s | 2 | 0 | −0.1249951216 | −0.1250000000 | $4.8784\times10^{-6}$ |
+| 2p | 2 | 1 | −0.1250016264 | −0.1250000000 | $1.6264\times10^{-6}$ |
+| 3s | 3 | 0 | −0.0555545919 | −0.0555555556 | $9.6370\times10^{-7}$ |
+| 3p | 3 | 1 | −0.0555563051 | −0.0555555556 | $7.4959\times10^{-7}$ |
+| 3d | 3 | 2 | −0.0555556198 | −0.0555555556 | $6.4242\times10^{-8}$ |
 
 These results were obtained using a calculation with an outer boundary of $60\,a_0$ and 2,400 interior points.
 
@@ -544,19 +539,13 @@ This isolates the effect of grid refinement as far as possible, although the fin
 
 The ground-state calculation produced the following values.
 
-\| Grid points | Grid spacing ($a_0$) | Numerical energy (Hartree) | Absolute error (Hartree) | Error ratio |
-
-\|---:|---:|---:|---:|---:|
-
-\| 250 | 0.199203 | −0.4951358022 | $4.8642\times10^{-3}$ | — |
-
-\| 500 | 0.099800 | −0.4987611470 | $1.2389\times10^{-3}$ | 3.92637 |
-
-\| 1,000 | 0.049950 | −0.4996885125 | $3.1149\times10^{-4}$ | 3.97722 |
-
-\| 2,000 | 0.024988 | −0.4999219774 | $7.8023\times10^{-5}$ | 3.99227 |
-
-\| 4,000 | 0.012497 | −0.4999804800 | $1.9520\times10^{-5}$ | 3.99707 |
+| Grid points | Grid spacing ($a_0$) | Numerical energy (Hartree) | Absolute error (Hartree) | Error ratio |
+|---:|---:|---:|---:|---:|
+| 250 | 0.199203 | −0.4951358022 | $4.8642\times10^{-3}$ | — |
+| 500 | 0.099800 | −0.4987611470 | $1.2389\times10^{-3}$ | 3.92637 |
+| 1,000 | 0.049950 | −0.4996885125 | $3.1149\times10^{-4}$ | 3.97722 |
+| 2,000 | 0.024988 | −0.4999219774 | $7.8023\times10^{-5}$ | 3.99227 |
+| 4,000 | 0.012497 | −0.4999804800 | $1.9520\times10^{-5}$ | 3.99707 |
 
 The analytical ground-state energy is $-0.5$ Hartree.
 
@@ -568,6 +557,7 @@ In the grid-converged regime, the energy error is therefore expected to behave a
 
 $$
 |E(\Delta r)-E_{\mathrm{exact}}|
+
 \propto(\Delta r)^2.
 $$
 
@@ -596,6 +586,7 @@ The analytical reference energy is
 
 $$
 E_4=-\frac{1}{2(4)^2}
+
 =-0.03125\ \text{Hartree}.
 $$
 
@@ -603,17 +594,12 @@ The outer boundary was varied from $40\,a_0$ to $100\,a_0$. The number of interi
 
 ### 8.3 Results
 
-\| Outer boundary ($a_0$) | Interior grid points | Numerical energy (Hartree) | Absolute error (Hartree) |
-
-\|---:|---:|---:|---:|
-
-\| 40 | 1,599 | −0.0305514661 | $6.9853\times10^{-4}$ |
-
-\| 50 | 1,999 | −0.0312040275 | $4.5972\times10^{-5}$ |
-
-\| 70 | 2,799 | −0.0312496415 | $3.5848\times10^{-7}$ |
-
-\| 100 | 3,999 | −0.0312496948 | $3.0517\times10^{-7}$ |
+| Outer boundary ($a_0$) | Interior grid points | Numerical energy (Hartree) | Absolute error (Hartree) |
+|---:|---:|---:|---:|
+| 40 | 1,599 | −0.0305514661 | $6.9853\times10^{-4}$ |
+| 50 | 1,999 | −0.0312040275 | $4.5972\times10^{-5}$ |
+| 70 | 2,799 | −0.0312496415 | $3.5848\times10^{-7}$ |
+| 100 | 3,999 | −0.0312496948 | $3.0517\times10^{-7}$ |
 
 ### 8.4 Interpretation
 
@@ -652,8 +638,11 @@ For a fixed angular momentum quantum number $l$, distinct radial eigenstates sho
 
 $$
 \int_0^\infty
+
 u_{nl}(r)u_{ml}(r)\,dr
+
 =
+
 \delta_{nm}.
 $$
 
@@ -661,7 +650,9 @@ The numerical overlap matrix is constructed using the discrete grid integration 
 
 $$
 S_{nm}
+
 =
+
 \sum_i u_{ni}u_{mi}\Delta r.
 $$
 
@@ -710,7 +701,9 @@ The three-dimensional orbital wavefunction is expressed as
 
 $$
 \psi_{nlm}(r,\theta,\phi)
+
 =
+
 R_{nl}(r)Y_l^m(\theta,\phi).
 $$
 
@@ -726,7 +719,9 @@ The probability density is
 
 $$
 \rho(r,\theta,\phi)
+
 =
+
 |\psi_{nlm}(r,\theta,\phi)|^2.
 $$
 
