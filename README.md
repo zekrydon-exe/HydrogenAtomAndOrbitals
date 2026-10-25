@@ -112,6 +112,12 @@ Ground-state grid convergence:
 python -m scripts.convergence_study
 ```
 
+Radial-boundary convergence for the 4s state:
+
+```bash
+python -m scripts.boundary_convergence
+```
+
 Three-dimensional orbital probability-density visualisations:
 
 ```bash
@@ -126,7 +132,7 @@ Run the complete test suite with:
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -v
 ```
 
-The latest confirmed test run passed **23 tests**.
+The latest confirmed test run passed **70 tests**, including input-validation checks and analytical radial-wavefunction comparisons for the 1s, 2s and 2p states.
 
 ## Results and Validation
 
@@ -166,10 +172,10 @@ Three-dimensional probability-density visualisations are generated for selected 
 
 The computational domain is finite, and the grid introduces discretisation error. Although the ground-state grid convergence and 4s boundary diagnostic show encouraging behaviour, further work could investigate convergence across more states and angular momentum sectors.
 
-Additional improvements could include systematic numerical-versus-analytical radial wavefunction comparisons, more extensive orthogonality tests, and higher-quality orbital rendering.
+The current automated tests compare numerical radial wavefunctions with analytical solutions for the 1s, 2s and 2p states. Further work could extend these comparisons to additional states, expand orthogonality tests across angular-momentum sectors, and improve orbital rendering.
 
 ## Reproducibility
 
-The scripts regenerate the numerical results and figures. The CSV outputs and plots are retained in the project directories so that the calculations can be inspected independently.
+The calculation scripts regenerate numerical results and figures. The boundary-convergence study writes `results/boundary_convergence.csv` and `figures/boundary_convergence.png`. Other generated CSV files and figures are retained in their respective project directories.
 
 This project is maintained in a local Git repository during development. Publication to GitHub will be performed separately after final review.

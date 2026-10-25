@@ -1,5 +1,7 @@
 """Numerical eigenvalue solver for the hydrogen atom."""
 
+from numbers import Integral
+
 import numpy as np
 from scipy.sparse.linalg import eigsh
 
@@ -39,12 +41,38 @@ def solve_radial_schrodinger(
         integral |u(r)|² dr = 1. Each row corresponds to one state.
     dr : float
         Radial grid spacing in Bohr radii.
+
+    Raises
+    ------
+    ValueError
+        If the radial boundary, grid size, angular momentum, or number
+        of states is invalid.
     """
-    if not isinstance(num_states, (int, np.integer)) or num_states < 1:
+    if (
+        isinstance(num_points, (bool, np.bool_))
+        or not isinstance(num_points, Integral)
+        or num_points < 2
+    ):
+        raise ValueError("num_points must be an integer >= 2.")
+
+    if (
+        isinstance(num_states, (bool, np.bool_))
+        or not isinstance(num_states, Integral)
+        or num_states < 1
+    ):
         raise ValueError("num_states must be a positive integer.")
+
     if num_states >= num_points:
         raise ValueError("num_states must be smaller than num_points.")
 
+    if (
+        isinstance(l, (bool, np.bool_))
+        or not isinstance(l, Integral)
+        or l < 0
+    ):
+        raise ValueError("l must be a non-negative integer.")
+
+    # create_radial_grid validates r_max and constructs the grid.
     r, dr = create_radial_grid(r_max, num_points)
     hamiltonian = build_radial_hamiltonian(r, dr, l)
 

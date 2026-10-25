@@ -47,7 +47,20 @@ def calculate_orbital(n, l, m, grid_size=100, extent=12.0):
     )
 
     radial_grid = np.concatenate(([0.0], r))
-    radial_values = np.concatenate(([0.0], radial_wavefunction))
+
+    # R(0) is finite for s orbitals and vanishes for l > 0.
+    # Estimate the s-orbital value at the origin by extrapolating
+    # the first few numerical radial values.
+    if l == 0:
+        radial_at_origin = float(
+            np.polyfit(r[:3], radial_wavefunction[:3], deg=2)[-1]
+        )
+    else:
+        radial_at_origin = 0.0
+
+    radial_values = np.concatenate(
+        ([radial_at_origin], radial_wavefunction)
+    )
 
     R = np.interp(
         radius.ravel(),
@@ -93,8 +106,8 @@ def plot_orbital(n, l, m, grid_size=100, extent=12.0):
     ax.plot_trisurf(
         vertices[:, 0],
         vertices[:, 1],
-        faces,
         vertices[:, 2],
+        triangles=faces,
         linewidth=0.05,
         antialiased=True,
         alpha=0.85,
